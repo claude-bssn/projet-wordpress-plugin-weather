@@ -1,0 +1,159 @@
+/*
+  Theme Name: Blog Mall Child
+  Description: Blog Mall Child Theme
+  Author: Klod
+  Template: blog-mall
+  Version: 1.0.0
+*/
+*{
+  font-family: 'Roboto',sans-serif !important;
+}
+#menu-menu-header{
+  display: flex;
+  list-style-type: none;
+}
+#menu-menu-header a{
+  color: #2e3246;
+  text-decoration: none;
+}
+#menu-menu-header a:hover{
+  color: #647988;
+}
+#menu-menu-header li{
+  margin-right: 50px;
+}
+#top-bar .widget {
+  text-align: right;
+  margin-bottom: 0;
+  font-size: 15px;
+}
+a{
+  color: #3d3d3d;
+}
+#top-bar {
+  padding: unset;
+  background-color: #f5f6fa;
+}
+.social-icons li a{
+  font-family: "Font Awesome 5 Brands" !important;
+  color: #2e3246;
+}
+.main-navigation a {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #3d3d3d;
+}
+.main-navigation a:hover {
+  color: white!important;
+  background-color: #a6bcc1;
+}
+.section-gap {
+  padding: unset;
+}
+h1.home{
+  font-size: 90px;
+  color: #ffffffcf !important;
+  letter-spacing: 40px;
+  font-weight: 900;
+  margin-left: 15px;
+}
+h2.home{
+  color: white!important;
+  letter-spacing: 22px;
+  font-size: 30px!important;
+  text-transform: uppercase;
+  line-height: 59px!important;
+  font-weight: 400!important;
+  margin: 100px 0 -35px 0;
+}
+
+ /* List Category Post Style  */
+.postlist{
+  display: flex;
+  justify-content: space-evenly; 
+}
+.spotlight h3 {
+  position: absolute;
+  text-align: center;
+  width: inherit;
+  margin-top: 100px;
+  border-bottom: white;
+}
+.spotlight h3 a{
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+.spotlight .thumbmagic{
+  width: 350px;
+  height: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 20px 0 20px;
+
+}
+.spotlight img{
+  height: 100%;
+  object-fit: cover;
+}
+.spotlight .separator{
+  border-bottom: 2px solid white;
+  width: 100px;
+  position: relative;
+  left: 125px;
+  top: 23px;
+}
+.titre{
+  padding: 20px 20px 0 20px;
+  font-size: 24px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.titre .pink{
+  color: #d85086;
+}
+.main-navigation ul.nav-menu > .menu-item-has-children > a:after{
+  display: none;
+}
+.main-navigation ul.nav-menu .current_page_item > a, .main-navigation ul.nav-menu .current-menu-item > a, .main-navigation ul.nav-menu .current_page_ancestor > a, .main-navigation ul.nav-menu .current-menu-ancestor > a, .main-navigation ul.nav-menu > li:hover > a, .main-navigation ul.nav-menu > li.focus > a {
+  color: #647988;
+}
+.main-navigation ul ul li:hover > a, .main-navigation ul ul li.focus > a {
+  background-color: #a6bcc1;
+  color: #fff;
+}
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+  background-color: #a6bcc1;
+  border: 2px solid #a6bcc1;
+}
+.entry-meta a:hover, .entry-meta a:focus, .post-navigation a:hover, .posts-navigation a:hover, .post-navigation a:focus, .posts-navigation a:focus 
+  {
+  color: #a6bcc1;
+}
+.wp-block-media-text img{
+  margin-bottom: 0;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+}
+.wp-block-cover__inner-container{
+  color: white!important;
+  font-weight: 400!important;
+}
+#colophon a:hover, #colophon a:focus {
+  color: #a6bcc1;
+}
+.wrapper.flex{
+  display: flex;
+}
+.menu-menu-header-container{
+  width: 50%;
+}
+.widget.widget_social_icons{
+  width: 50%;
+
+}
