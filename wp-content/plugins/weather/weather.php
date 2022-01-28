@@ -19,7 +19,7 @@ function my_admin_menu(){
     'dashicons-cloud'
   );
 }
-
+// Title in plungin menu
 add_action('admin_menu', 'my_admin_menu');
 
 function my_admin_page_contents(){
@@ -46,7 +46,7 @@ function my_settings_init(){
     'my_setting_section_callback_function',
     MON_PLUGIN_SETTING_PAGE
   );
-
+// settings for the field
   add_settings_field(
     'meteo_first_setting_field',
     __('Ma clé API OpenWeather', 'wp-weather'),
@@ -58,10 +58,12 @@ function my_settings_init(){
   register_setting(MON_PLUGIN_SETTING_PAGE, 'meteo_first_setting_field');
 }
 
+//  instruction on how the plugin works
 function my_setting_section_callback_function($args){
   echo "<p>Ce plugin localise la ville où se trouve le navigateur qui consulte votre site et affiche la météo dans la langue du navigateur. </p>
         <p>Veuillez creer une clé d'API sur <a href='https://openweathermap.org/'>OpenWeather</a> .</p>
-        <p>Puis renseignez votre clé dans le champ ci dessous et sauvegardez.</p>";
+        <p>Puis renseignez votre clé dans le champ ci dessous et sauvegardez.</p>
+        <p>Utilisez le shortcode [meteo] ou vous souhaitez faire apparaitre le widget météo dans la page.</p>";
 }
 
 function my_first_setting_markup(){
@@ -70,7 +72,14 @@ function my_first_setting_markup(){
     value="<?php echo get_option('meteo_first_setting_field'); ?>">
   <?php
 }
-
+/*
+  The function get the API key given in the admin menu
+  Get the city from the public ip address of th browser. 
+    If connected behind a proxy or localhost the choose Lyon as a default city.
+  Get le language set of the browser to display information in right language.
+  Then call the API OpenWeather the retrieve weather info.
+  Include a template specially designed to display weather nicely. 
+*/ 
 function meteo_open_weather($atts, $content = null) {
   $locale = explode('-',$_SERVER['HTTP_ACCEPT_LANGUAGE']);
   extract(shortcode_atts(array(
@@ -87,15 +96,16 @@ function meteo_open_weather($atts, $content = null) {
     include 'template-parts/meteo-card.php';
   return ob_get_clean();
 }
-
+// Create short code to display widget 
 add_shortcode("meteo", "meteo_open_weather");
-
+//  Include the style file for the plugin
 add_action('wp_enqueue_scripts', 'callback_for_setting_up_scripts');
 function callback_for_setting_up_scripts() {
     wp_register_style( 'meteo-style', plugins_url('weather/asset/style.css'));
     wp_enqueue_style( 'meteo-style' , plugins_url('weather/asset/style.css') );
 }
 
+// function to find the city of the user with Ip address
 function geolocalisation(){
  if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
     $ip = $_SERVER['HTTP_CLIENT_IP'];
@@ -105,12 +115,11 @@ function geolocalisation(){
       $ip = $_SERVER['REMOTE_ADDR'];
   }
 
-  if ($ip = '::1'){
+  if ($ip == '::1'){
     $city = 'Lyon';
     return $city;
   }else{
-    $ip_address= $ip;
-    $geopluginURL='http://www.geoplugin.net/php.gp?ip='.$ip_address;
+    $geopluginURL='http://www.geoplugin.net/php.gp?ip='.$ip;
     $addrDetailsArr = unserialize(file_get_contents($geopluginURL));
     $city = $addrDetailsArr['geoplugin_city'];
     return $city;

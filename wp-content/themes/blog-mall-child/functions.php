@@ -7,6 +7,8 @@
     array( $parent_style ), wp_get_theme()->get('Version')
   );
 }
+
+// create new menu for header and footer
 function register_new_menus() {
   register_nav_menus( array(
     'primary' => esc_html__( 'Primary', 'blog-mall' ),
@@ -14,5 +16,11 @@ function register_new_menus() {
     'footer' => esc_html__( 'Footer Menu', 'blog-mall' )
   ) );
 }
+
 add_action( 'init', 'register_new_menus' );
 
+// Hide WP version
+remove_action("wp_head", "wp_generator");
+
+// Give less informative warnings for connection errors
+add_filter('login_errors',function($a) {return "Identification incorrect";});
